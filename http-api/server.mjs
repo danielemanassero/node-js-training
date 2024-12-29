@@ -3,8 +3,22 @@ import { testRequest } from "./module_http.mjs";
 
 
 const server = createServer((req, res) => {
-  res.writeHead(200, {'Content-Type': 'text-plain'});
-  res.end('Hello World!\n');
+
+  // console.log("req.url ->", req.url);
+  // console.log("req.method ->", req.method);
+  // console.log("/******************************/");
+  
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.write('Welcome to Node.js Training!');
+  res.end();
+});
+
+
+server.on("request", (req, res) => {
+  console.log("/***** ON REQUEST EVENT *****/");
+  console.log("req.url ->", req.url);
+  console.log("req.method ->", req.method);
+  console.log("/******************************/");
 });
 
 
