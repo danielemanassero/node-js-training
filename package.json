@@ -1,0 +1,15 @@
+{
+  "name": "node-js-training",
+  "description": "Trainig projects about Node.js",
+  "version": "0.1.0",
+  "main": "./index.js",
+  "type": "module",
+  "author": "Daniele Manassero",
+  "license": "MIT",
+  "scripts": {
+    "server": "nodemon index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
