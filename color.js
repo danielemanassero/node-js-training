@@ -1,12 +1,13 @@
 import { request } from "node:http";
 
 
-export function testRequest() {
+export function findRgb(rgbValues) {
 
   // Serialif Color API - https://color.serialif.com/?ref=public_apis&utm_medium=website
   const options = {
     hostname: "color.serialif.com",
-    path: "/rgb=85,102,119",
+    path: `/rgb=${rgbValues}`,
+    // path: "/rgb=85,102,119",
     method: "GET",
     'headers': {},
     'maxRedirects': 20
@@ -21,9 +22,8 @@ export function testRequest() {
     });
 
     res.on("end", () => {
-      // var body = Buffer.concat(chunks);
-      // console.log(body.toString());
-      console.log(JSON.parse(chunks));
+      var body = Buffer.concat(chunks);
+      console.log(JSON.parse(body));
     });
 
     res.on("error", (error) => {
