@@ -1,24 +1,16 @@
-import { createServer } from "node:http";
+import http from "node:http";
 import url from "node:url";
 import { findRgb } from "./color.js";
 
 
-const server = createServer((req, res) => {
-
-  // console.log("req.url ->", req.url);
-  // console.log("req.method ->", req.method);
-  // console.log("/******************************/");
-  
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  res.write('Welcome to Node.js Training!');
-  res.end();
-});
+const server = http.createServer((req, res) => {});
 
 
 server.on("request", (req, res) => {
   const urlPamas = url.parse(req.url);
 
   if (req.method === "GET" && urlPamas.pathname === "/color") {
+
     const params = urlPamas.query.split('&');
     const rgb = params.filter(item => {
       const values = item.split('=');
@@ -27,6 +19,19 @@ server.on("request", (req, res) => {
       }
     });
     findRgb(rgb);
+
+  } else if (req.method === "GET" && urlPamas.pathname === "/test") {
+
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.write('Test page');
+    res.end();
+
+  } else {
+
+    res.writeHead(404, { 'Content-Type': 'text/html' });
+    res.write('Page Not Found');
+    res.end();
+
   }
 
   // console.log("req.url ->", req.url);
