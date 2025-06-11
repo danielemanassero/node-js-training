@@ -3,7 +3,7 @@ import { request } from "node:http";
 
 export function findRgb(rgbValues) {
 
-  // Serialif Color API - https://color.serialif.com/?ref=public_apis&utm_medium=website
+  // Serialif Color API - https://color.serialif.com/
   const options = {
     hostname: "color.serialif.com",
     path: `/rgb=${rgbValues}`,
